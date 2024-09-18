@@ -6,12 +6,7 @@ public class Meteor : MonoBehaviour
 {
     public delegate void MeteorDelegate();
     public static MeteorDelegate MeteorDown;
-    public static MeteorDelegate MeteorSpawn;
 
-    protected void Awake()
-    {
-        MeteorSpawn();
-    }
     // Update is called once per frame
     protected void Update()
     {
