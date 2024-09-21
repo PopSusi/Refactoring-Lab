@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     public GameObject laserPrefab;
+    private AudioSource laser;
 
     private float speed = 6f;
     private float horizontalScreenLimit = 10f;
@@ -14,6 +17,7 @@ public class Player : MonoBehaviour
     public delegate void PlayerDelegate();
     public static PlayerDelegate PlayerDead;
 
+    void Awake() => laser = GetComponent<AudioSource>();
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,7 @@ public class Player : MonoBehaviour
         {
             Instantiate(laserPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             canShoot = false;
+            laser.Play();
             StartCoroutine("Cooldown");
         }
     }

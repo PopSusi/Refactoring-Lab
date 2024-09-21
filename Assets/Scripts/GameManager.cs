@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(InputManager))]
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
 
     public int meteorCount = 0;
+
+    public Text scoreText;
+    private int score;
 
     // Start is called before the first frame update
     void Awake()
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour
     void MeteorDown()
     {
         meteorCount++;
+        score++;
         if(meteorCount >= 5) BigMeteor();
+        scoreText.text = "Score: " + score;
     }
 }
